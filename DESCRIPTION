@@ -1,0 +1,22 @@
+Package: stat695data
+Title: Data for Purdue Stat695
+Version: 0.0.0.9000
+Authors@R: person("Barret", "Schloerke", email = "schloerke@gmail.com", role = c("aut", "cre"))
+Description: Supplies datasets for the stat695 course at Purdue.
+Depends:
+    R (>= 3.3.2)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    stringr,
+    rvest,
+    lubridate,
+    progress,
+    plyr,
+    magrittr,
+    dplyr,
+    gapminder
+Suggests:  doParallel
+Remotes: hafen/trelliscopejs
+RoxygenNote: 5.0.1
