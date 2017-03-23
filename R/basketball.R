@@ -15,7 +15,7 @@ get_teams <- function(year) {
   while (TRUE) {
 
     store_name <- cur_url %>%
-      str_replace("http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/year/", "") %>%
+      str_replace("http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/", "") %>%
       str_replace("/seasontype/2", "") %>%
       str_replace_all("/", "_")
 
@@ -57,7 +57,7 @@ get_team_stats <- function(year, id) {
 
   team_url <- basketball_team_year_url(year, id)
 
-  store_name <- file.path("team_stats", str_c(year, "-", id))
+  store_name <- file.path("team_stats", year, str_c(year, "-", id))
   html <- cached_html(team_url, store_name)
 
   team_name <- html %>% html_node("#sub-branding b") %>% html_text()
@@ -72,7 +72,7 @@ get_team_stats <- function(year, id) {
     "avg_steals", "avg_blocks", "avg_turnovers", "avg_field_goal_perc", "avg_free_throw_perc", "avg_three_point_perc"
   )
   game_statistics[-1] <- lapply(game_statistics[-1], as.numeric)
-  game_statistics[1] <- as.character(game_statistics[1])
+  game_statistics[[1]] <- as.character(game_statistics[[1]])
 
   season_statistics <- stats[[2]] %>% html_table(fill = TRUE)
   season_statistics <- season_statistics[seq(-1, -1 * which(season_statistics[,1] == "Player")), ]
@@ -85,7 +85,7 @@ get_team_stats <- function(year, id) {
     "total_assists", "total_turnovers", "total_steals", "total_blocks"
   )
   season_statistics[-1] <- lapply(season_statistics[-1], as.numeric)
-  season_statistics[1] <- as.character(season_statistics[1])
+  season_statistics[[1]] <- as.character(season_statistics[[1]])
 
   player_statistics <- merge(game_statistics, season_statistics)
 
@@ -95,28 +95,57 @@ get_team_stats <- function(year, id) {
 }
 
 
-get_all_team_statistics <- function(start = 2002, end = 2017) {
-  id_info <- get_all_team_ids(start, end)
 
+#' Get all NCAA data
+#'
+#' Starting at 2002, and ends with 2017
+#'
+#' @param start year to start with
+#' @param end year to end with
+#' @export
+get_ncaa <- function(start = 2002, end = 2017) {
 
   is_parallel <- TRUE
   require(doParallel)
   doParallel::registerDoParallel(4)
-  pb <- progress_bar$new(
-    format = "[:bar] :year/:team_id :percent eta::eta\n",
-    total = nrow(id_info) / ifelse(is_parallel, 4, 1)
-  )
-  pb$tick(0)
 
-  list_info <- plyr::llply(seq_len(nrow(id_info)), function(i) {
-    year <- id_info$year[i]
-    team_id <- id_info$team_ids[i]
-    pb$tick(tokens = list(year = year, team_id = team_id))
+  seq(start, end, by = 1) %>%
+    lapply(function(year) {
+      cache_file <- file.path(cache_dir, "team_processed", str_c(year, ".rds"))
 
-    get_team_stats(year, team_id)
-  }, .parallel = is_parallel)
 
-  browser()
+      if (file.exists(cache_file)) {
+        ret <- readRDS(cache_file)
+        return(ret)
+      }
+
+      team_info <- get_teams(year)
+
+      pb <- progress_bar$new(
+        format = "[:bar] :year/:team_id :percent eta::eta\n",
+        total = nrow(team_info) / ifelse(is_parallel, 4, 1)
+      )
+      pb$tick(0)
+
+      team_dt <- plyr::llply(
+        seq_len(nrow(team_info)),
+        function(i) {
+          year <- team_info$year[i]
+          team_id <- team_info$team_ids[i]
+          pb$tick(tokens = list(year = year, team_id = team_id))
+
+          get_team_stats(year, team_id)
+        },
+        .parallel = is_parallel
+      ) %>%
+        bind_rows()
+
+      dir.create(dirname(cache_file), recursive = TRUE, showWarnings = FALSE)
+      saveRDS(team_dt, cache_file)
+      return(team_dt)
+
+    }) ->
+  list_info
 
   list_info %>%
     bind_rows()

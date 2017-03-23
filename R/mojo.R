@@ -27,7 +27,7 @@ movie_info <- function(movie_id) {
   img_loc <- html %>% html_nodes("#body td > a > img") %>% html_attr("src")
   img_loc <- img_loc[1]
 
-  release_date <- release_info[3] %>% str_replace_all("Release Date: |,", "") %>% mdy()
+  release_date <- release_info[3] %>% str_replace_all("Release Date: |,", "") %>% lubridate::mdy()
   genres <- release_info[4] %>% str_replace("Genre: ", "") %>% str_trim()
   mpaa <- release_info[6] %>% str_replace("MPAA Rating: ", "") %>% str_trim()
 
@@ -154,8 +154,8 @@ extract_mojo_info <- function(year = 1982, week = 1) {
 
   ratings_dt %>%
     mutate(
-      start_date = mdy(str_c(time_info[1], time_info[2], time_info[5], sep = " ")),
-      end_date = mdy(str_c(time_info[3], time_info[4], time_info[5], sep = " ")),
+      start_date = lubridate::mdy(str_c(time_info[1], time_info[2], time_info[5], sep = " ")),
+      end_date = lubridate::mdy(str_c(time_info[3], time_info[4], time_info[5], sep = " ")),
       week = week,
       year = year
     ) ->

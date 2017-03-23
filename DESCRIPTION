@@ -14,7 +14,8 @@ Imports:
     plyr,
     magrittr,
     dplyr,
-    gapminder
-Suggests:  doParallel
+    gapminder,
+    xml2
+Suggests: doParallel
 Remotes: hafen/trelliscopejs
 RoxygenNote: 5.0.1
