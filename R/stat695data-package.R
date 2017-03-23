@@ -1,3 +1,3 @@
-#' @import dplyr stringr rvest progress tibble xml2
+#' @import dplyr stringr rvest tidyr progress tibble xml2
 #' @importFrom magrittr %>%
 NULL

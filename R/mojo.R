@@ -166,6 +166,9 @@ extract_mojo_info <- function(year = 1982, week = 1) {
     unnest(movie_information) ->
   ratings_dt
 
+  # raarrange to have year then week first
+  ratings_dt <- ratings_dt[, c(17, 16, 1:15, 18:21)]
+
   saveRDS(ratings_dt, cache_file)
 
   ratings_dt
@@ -200,5 +203,23 @@ create_mojo <- function() {
     extract_mojo_info(year, week)
   }, .parallel = is_parallel)
 
-  all_ratings <- bind_rows(all_ratings_list) %>% as_tibble()
+  all_ratings_list %>%
+    bind_rows() %>%
+    as_tibble()  ->
+  all_ratings
+
+  all_ratings$mpaa[which(all_ratings$mpaa == "GP")] <- "PG"
+
+  all_ratings %>%
+    mutate(
+      title = as.factor(title),
+      img_loc = as.factor(img_loc),
+      movie_id = as.factor(movie_id),
+      genres = as.factor(genres),
+      mpaa = factor(mpaa, levels = c("G", "PG", "PG-13", "NC-17", "R", "Unrated", "Unknown", "Not Yet Rated"), ordered = TRUE),
+      studio = as.factor(studio)
+    ) ->
+  all_ratings
+
+  all_ratings
 }
