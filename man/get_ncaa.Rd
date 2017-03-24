@@ -14,4 +14,3 @@ get_ncaa(start = 2002, end = 2017)
 \description{
 Starting at 2002, and ends with 2017
 }
-

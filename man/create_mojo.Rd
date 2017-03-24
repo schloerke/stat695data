@@ -9,4 +9,3 @@ create_mojo()
 \description{
 make mojo boxoffice data. Example url: http://www.boxofficemojo.com/weekend/chart/?view=&yr=2016&wknd=02&p=.htm
 }
-
