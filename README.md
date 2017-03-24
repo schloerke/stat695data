@@ -9,6 +9,10 @@ You can install `stat695data` from github with:
 ``` r
 drat::addRepo("schloerke")
 install.packages("stat695data")
+
+# for examples
+## drat::addRepo("schloerke")
+install.packages("trelliscopejs")
 ```
 
 ## Example
@@ -16,11 +20,13 @@ install.packages("stat695data")
 Load data:
 
 ``` r
+library(stat695data)
 # load data
-data(mojo, package = "stat695data")
-data(ncaa, package = "stat695data")
+data(mojo)
+data(ncaa)
 ```
 
+### NCAA
 ``` r
 
 # full trelliscopejs exmaple
@@ -92,7 +98,7 @@ ncaa %>%
 
 ```
 
-## Pokemon
+### Pokemon
 ``` r
 # http://ryanhafen.com/blog/pokemon
 
@@ -113,7 +119,7 @@ pok %>%
 ```
 
 
-## gapminder
+### Gapminder
 
 ``` r
 library(gapminder)
