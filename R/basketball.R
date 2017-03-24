@@ -107,7 +107,7 @@ get_team_stats <- function(year, id) {
 get_ncaa <- function(start = 2002, end = 2017) {
 
   is_parallel <- TRUE
-  require(doParallel)
+  requireNamespace("doParallel")
   doParallel::registerDoParallel(4)
 
   seq(start, end, by = 1) %>%

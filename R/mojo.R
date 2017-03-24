@@ -187,8 +187,8 @@ create_mojo <- function() {
     arrange(year, week)
 
   is_parallel <- TRUE
-  require(doParallel)
-  registerDoParallel(4)
+  requireNamespace("doParallel")
+  doParallel::registerDoParallel(4)
   pb <- progress_bar$new(
     format = "[:bar] :year/:week :percent eta::eta\n",
     total = nrow(dates) / ifelse(is_parallel, 4, 1)
