@@ -24,12 +24,14 @@ data(ncaa, package = "stat695data")
 ``` r
 
 # full trelliscopejs exmaple
-library(stat695data)
+library(magrittr)
+library(tidyr)
 library(rbokeh)
 library(dplyr)
 library(ggplot2)
+
+library(stat695data)
 library(trelliscopejs)
-library(magrittr)
 
 # load data
 data(ncaa, package = "stat695data")
@@ -126,7 +128,6 @@ qplot(year, lifeExp, data = gapminder, geom = "line", group = country) +
 qplot(year, lifeExp, data = gapminder, geom = "line", group = country) +
   facet_trelliscope(~ country, nrow = 2, ncol = 4, path = "_gggapminder")
 
-library(tidyr)
 country_model <- function(df) {
   lm(lifeExp ~ year, data = df)
 }
