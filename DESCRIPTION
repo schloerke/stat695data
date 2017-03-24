@@ -17,6 +17,7 @@ Imports:
     gapminder,
     xml2,
     rbokeh,
+    tibble,
     tidyr
 Suggests: doParallel
 RoxygenNote: 6.0.1
