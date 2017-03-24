@@ -1,10 +1,24 @@
 language: R
 sudo: false
 cache: packages
+
 r_github_packages:
-- schloerke/travisDrat
+  - schloerke/travisDrat
+
 after_success:
-- Rscript -e "travisDrat::deploy_drat()"
+  - Rscript -e "travisDrat::deploy_drat()"
+
 env:
   global:
     secure: IhyohcsOW1+8xPrlCQB76/1zk2vbzKSKUYNwFO51SNDObn8WuiL5uQk8yo6zYe7yHQ9tmlnjGiH3Tl9omAEvz0hjHRd0AYEIUx2FKrzyBWIzYnwXclcCOPk5hduvF4ZCxDQ0+Gf+jq7/SKF7Q4sMpD/povZgNirM8KaX0OmJ2ZGwovrfrvLru6afUtW4JtwWtFrRQ8TsG07OsCJCzEvSy0//THTmdDMkDJHWY8Fkz7Z1ZxP5vWz4DfraqgWtjLvwohQDvmF6lK6fD5hBMwBwmLD1n26bPuRL3o7B2cyq7ELaNOI2KbQE3d1Eb7jDhawD6vXOsDy/ozdaG463BTqM1upafwWXTIb6v2KIVAO9nlH1B551i6N4JAHPeAEU0pZ0VO2Q1g7TACj4P7UN99t5fvAIA3GMUG2ore4CwntNFoj0O5dBfl0XGaP8ov4ozAxImF5V3WIN+C8Hsay6aUKyk/zxtZXAw7QyjTFnzWERwdI40n+1yoMPd9gHBsjNBsUr1SyiijF9rB3TW8E4bNVLnv4rTOqDHO0cNlKm+iuwJeWLUZAs5U8dKUiPU4pjm8J9vpaZRH0A4XCfDn4PdWHhWdS0+aGBQSTLgE/YvZLNWMgUvvdLPaCZb2jLRhmkDPiFzpatGXbWYudo8aO/fP8rZ9TmfQCGOxpIznn27U1LsFo=
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+branches:
+  only:
+    - master
+    - dev
+    - travis
