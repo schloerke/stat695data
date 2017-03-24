@@ -9,9 +9,11 @@
 data(mojo)
 }
 \description{
-This data contains weekend movie boxoffice performance scraped from the the website \href{www.boxofficemojo.com}.  The urls used were similar to \href{http://www.boxofficemojo.com/weekend/chart/?view=&yr=2016&wknd=51&p=.htm}.
+This data contains weekend movie boxoffice performance scraped from the the website \href{www.boxofficemojo.com}{www.boxofficemojo.com}.  The urls used were similar to \href{http://www.boxofficemojo.com/weekend/chart/?view=&yr=2016&wknd=51&p=.htm}{http://www.boxofficemojo.com/weekend/chart/?view=&yr=2016&wknd=51&p=.htm}.
 }
 \details{
+Data accessed on March 23, 2017
+
 \itemize{
   \item year year of movie weekend. Ranges from 1982 to 2017
   \item week week of movie weekend. Ranges from 1 to 53

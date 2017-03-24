@@ -1,6 +1,8 @@
 #' NCAA Mens Basketball Regular Season Player Statistics
 #'
-#' This data contains regular season statistics for all NCAA mens basketball players.  Teams were scraped from \href{http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/}. Team information was scraped from urls similar to \href{http://www.espn.com/mens-college-basketball/team/_/id/2509/purdue-boilermakers}.
+#' This data contains regular season statistics for all NCAA mens basketball players.  Teams were scraped from \href{http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/}{http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/}. Team information was scraped from urls similar to \href{http://www.espn.com/mens-college-basketball/team/_/id/2509/purdue-boilermakers}{http://www.espn.com/mens-college-basketball/team/_/id/2509/purdue-boilermakers}.
+#'
+#' Data accessed on March 23, 2017
 #'
 #' @details \itemize{
 #'   \item species Ch. concinna, Ch. heptapotamica, Ch. heikertingeri
