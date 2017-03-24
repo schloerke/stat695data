@@ -16,7 +16,7 @@ Imports:
     dplyr,
     gapminder,
     xml2,
+    rbokeh,
     tidyr
 Suggests: doParallel
-Remotes: hafen/trelliscopejs
 RoxygenNote: 5.0.1

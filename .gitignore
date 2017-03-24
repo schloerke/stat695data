@@ -38,4 +38,4 @@ vignettes/*.pdf
 .RData
 
 
-_html
+/_*/

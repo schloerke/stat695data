@@ -61,6 +61,7 @@ get_team_stats <- function(year, id) {
   html <- cached_html(team_url, store_name)
 
   team_name <- html %>% html_node("#sub-branding b") %>% html_text()
+  team_conference <- html %>% html_node("#sub-branding .sub-title") %>% html_text()
 
   stats <- html %>% html_nodes(".mod-content table")
 
@@ -89,7 +90,7 @@ get_team_stats <- function(year, id) {
 
   player_statistics <- merge(game_statistics, season_statistics)
 
-  cbind(year = year, team = team_name, player_statistics, stringsAsFactors = FALSE) %>%
+  cbind(year = year, conference = team_conference, team = team_name, player_statistics, stringsAsFactors = FALSE) %>%
     as_data_frame()
 
 }
