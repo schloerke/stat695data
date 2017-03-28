@@ -51,7 +51,8 @@ Load data:
 library(stat695data)
 # load data
 data(mojo)
-data(ncaa)
+# data(ncaa)
+ncaa <- read.csv("https://github.com/schloerke/stat695data/raw/master/ncaa.csv")
 ```
 
 ### NCAA
