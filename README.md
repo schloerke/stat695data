@@ -1,12 +1,28 @@
 # stat695data [![Travis-CI Build Status](https://travis-ci.org/schloerke/stat695data.svg?branch=master)](https://travis-ci.org/schloerke/stat695data)
 
 
+## Links
+
+* NCAA: [http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/](http://www.espn.com/mens-college-basketball/statistics/team/_/stat/scoring/sort/points/)
+* Box office weekend performance: [http://www.boxofficemojo.com/weekend/chart/?yr=2017&wknd=12&p=.htm](http://www.boxofficemojo.com/weekend/chart/?yr=2017&wknd=12&p=.htm)
+* Pokemon: [http://ryanhafen.com/blog/pokemon](http://ryanhafen.com/blog/pokemon)
+* Gapminder: [https://youtu.be/hVimVzgtD6w?t=205](https://youtu.be/hVimVzgtD6w?t=205)
+* ggplot2: [http://docs.ggplot2.org/current/](http://docs.ggplot2.org/current/)
+* rbokeh: [https://hafen.github.io/rbokeh/index.html](https://hafen.github.io/rbokeh/index.html)
+* list-columns (r4ds): [http://r4ds.had.co.nz/many-models.html#list-columns-1](http://r4ds.had.co.nz/many-models.html#list-columns-1)
+* list-columns (barret): [https://github.com/schloerke/presentation-2017_01_26-tidyverse/blob/master/gso-2017-tidyverse.pdf](https://github.com/schloerke/presentation-2017_01_26-tidyverse/blob/master/gso-2017-tidyverse.pdf)
+* R code cheat sheets: [https://www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
+    * Data Visualization: [https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
+    * Data Transformation: [https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf](https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf)
+    * Basic R: [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)
+
 ## Installation
 
 You can install `stat695data` from github with:
 
 
 ``` r
+# install.packages("drat")
 drat::addRepo("schloerke")
 install.packages("stat695data")
 
