@@ -16,6 +16,18 @@
     * Data Transformation: [https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf](https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf)
     * Basic R: [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)
 
+## Questions
+
+### March 28-30
+
+* How many teams have players that average over 15 minutes per game for their entire career?
+* What teams would you consider good rebounding teams?
+* Which teams score more 3 pointers respectively? Are they "three point only" teams?
+* Can you visually find out what year the three point arch distance was increased? (Did player performance decreased)
+
+
+
+
 ## Installation
 
 You can install `stat695data` from github with:
