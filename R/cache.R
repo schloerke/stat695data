@@ -1,6 +1,6 @@
 
 
-cache_dir <- "_html"
+cache_dir <- file.path("..", "_html")
 
 cached_html <- function(html_url, save_name) {
 
