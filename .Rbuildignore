@@ -3,3 +3,6 @@
 ^\.travis\.yml$
 ^/_*
 ncaa.csv
+mojo.csv
+_html/*
+.git
