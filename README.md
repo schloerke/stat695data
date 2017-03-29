@@ -48,10 +48,7 @@ install.packages("trelliscopejs")
 Load data:
 
 ``` r
-library(stat695data)
-# load data
-data(mojo)
-# data(ncaa)
+mojo <- read.csv("https://github.com/schloerke/stat695data/raw/master/mojo.csv")
 ncaa <- read.csv("https://github.com/schloerke/stat695data/raw/master/ncaa.csv")
 ```
 
@@ -67,9 +64,6 @@ library(ggplot2)
 
 library(stat695data)
 library(trelliscopejs)
-
-# load data
-data(ncaa, package = "stat695data")
 
 # inspect data
 tibble::glimpse(ncaa)
