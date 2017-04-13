@@ -26,6 +26,13 @@
 * Can you visually find out what year the three point arch distance was increased? (Did player performance decreased)
 
 
+### April 6
+
+* Which movies performed well in 2016?
+* Which movies had better "weekend #3 performances" than other movies opening weekend?
+* What movie genre "survives" longer?
+* Can you see anything 'odd' about animated Disney weekend gross
+
 
 
 ## Installation
