@@ -6,3 +6,4 @@ ncaa.csv
 mojo.csv
 _html/*
 .git
+^scripts/

@@ -67,10 +67,14 @@ qplot(total_amount_floor, val, data = ans, geom = "line") +
 ## Explore amount of money per trip with number of passengers
 ######################################
 
+# add a new column to the data
 add_total_amount_floor <- function(x) {
   x$total_amount_floor <- floor(x$total_amount)
   x
 }
+# subset the data to total amounts between 0 and 300 dollars
+# group by the floored total amount and passenger count
+# count the number of each of the groups
 get_p_money_counts <- function(x) {
   y <- subset(x, x$total_amount > 0 & x$total_amount < 300)
   y %>%
@@ -78,9 +82,12 @@ get_p_money_counts <- function(x) {
     count()
 }
 
+# add transform to the original data
 dt_with_extra <- addTransform(dt, add_total_amount_floor)
+# add a second transform to the original data
 dt_money_counts <- addTransform(dt_with_extra, get_p_money_counts)
 
+# divide the data according to the floored total amount and passenger counts
 p_dollar_by_amount <- divide(
   dt_money_counts,
   c("total_amount_floor", "passenger_count"),
@@ -89,11 +96,13 @@ p_dollar_by_amount <- divide(
 )
 p_dollar_by_amount[[1]]
 
+# get the sum of all numbers
 get_sum <- function(x) {
   sum(x$n)
 }
+# get sum of each group. comine and return as data.frame
 ans <- drLapply(p_dollar_by_amount, get_sum, combine = combRbind)
-ans <- ans %>% arrange(total_amount_floor)
+# save output to local file system (in memory)
 saveRDS(ans, "p_dollar_by_amount.rds")
 ans <- readRDS("p_dollar_by_amount.rds")
 
